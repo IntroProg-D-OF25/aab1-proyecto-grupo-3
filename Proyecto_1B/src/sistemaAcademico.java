@@ -2,11 +2,11 @@ import java.util.Random;
 
 public class sistemaAcademico {
     public static void main(String[] args) {
-        float acd, ape, aa;
+        float acd, ape, aa, promedio;
         int course, id, nStudent = 9;
         String name;
         Random rand = new Random();
-        int course1Count = 0, course2Count = 0, course3Count = 0;
+        int course1Count = 0, course2Count = 0, course3Count = 0, nApprovedC1 = 0, nFailedC1 = 0, nApprovedC2 = 0, nFailedC2 = 0, nApprovedC3 = 0, nFailedC3 = 0;
 
 
         for (int i = 0; i < nStudent; i++) {
@@ -16,24 +16,49 @@ public class sistemaAcademico {
             acd = rand.nextFloat(3.5F);
             ape = rand.nextFloat(3.5F);
             aa = rand.nextFloat(3);
+            promedio = acd + ape + aa;
 
             if (course == 1) {
-                course1Count++;
-                System.out.println("-------------------");
-                System.out.println("Name:   " + name);
-                System.out.println("Id:     " + id);
+//                course1Count++;
+//                System.out.println("-------------------");
+//                System.out.println("Name:   " + name);
+//                System.out.println("Id:     " + id);
                 //                System.out.println("Course: " + course);
-                System.out.println("acd:    " + acd);
-                System.out.println("ape:    " + ape);
-                System.out.println("aa:     " + aa);
+                //                System.out.println("acd:    " + acd);
+                //                System.out.println("ape:    " + ape);
+                //                System.out.println("aa:     " + aa);
+//                System.out.println("promedio: " + promedio);
+
+                if (promedio >= 7)
+                    nApprovedC1++;
+                else {
+                    nFailedC1++;
+                }
+
+
             } else if (course == 2) {
+
                 course2Count++;
+                if (promedio >= 7)
+                    nApprovedC2++;
+                else {
+                    nFailedC2++;
+                }
             } else {
                 course3Count++;
+                if (promedio >= 7)
+                    nApprovedC3++;
+                else {
+                    nFailedC3++;
+                }
             }
+
+
         }
-        System.out.println("Total de estudiantes en el curso 1: " + course1Count);
-        System.out.println("Total de estudiantes en el curso 2: " + course2Count);
-        System.out.println("Total de estudiantes en el curso 3: " + course3Count);
+
+//        System.out.println("--------------------------------------");
+//        System.out.println("Total de estudiantes en el curso 1: " + course1Count + " | " + nApprovedC1 + " | " + nFailedC1);
+//        System.out.println("Total de estudiantes en el curso 2: " + course2Count + " | " + nApprovedC2 + " | " + nFailedC2);
+//        System.out.println("Total de estudiantes en el curso 3: " + course3Count + " | " + nApprovedC3 + " | " + nFailedC3);
     }
 }
