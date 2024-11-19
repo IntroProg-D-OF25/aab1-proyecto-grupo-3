@@ -19,15 +19,15 @@ public class sistemaAcademico {
             promedio = acd + ape + aa;
 
             if (course == 1) {
-//                course1Count++;
-//                System.out.println("-------------------");
-//                System.out.println("Name:   " + name);
-//                System.out.println("Id:     " + id);
+                course1Count++;
+                System.out.println("-------------------");
+                System.out.println("Name:   " + name);
+                System.out.println("Id:     " + id);
                 //                System.out.println("Course: " + course);
                 //                System.out.println("acd:    " + acd);
                 //                System.out.println("ape:    " + ape);
                 //                System.out.println("aa:     " + aa);
-//                System.out.println("promedio: " + promedio);
+                System.out.println("promedio: " + promedio);
 
                 if (promedio >= 7)
                     nApprovedC1++;
@@ -56,9 +56,9 @@ public class sistemaAcademico {
 
         }
 
-//        System.out.println("--------------------------------------");
-//        System.out.println("Total de estudiantes en el curso 1: " + course1Count + " | " + nApprovedC1 + " | " + nFailedC1);
-//        System.out.println("Total de estudiantes en el curso 2: " + course2Count + " | " + nApprovedC2 + " | " + nFailedC2);
-//        System.out.println("Total de estudiantes en el curso 3: " + course3Count + " | " + nApprovedC3 + " | " + nFailedC3);
+        System.out.println("--------------------------------------");
+        System.out.println("Total de estudiantes en el curso 1: " + course1Count + " | " + nApprovedC1 + " | " + nFailedC1);
+        System.out.println("Total de estudiantes en el curso 2: " + course2Count + " | " + nApprovedC2 + " | " + nFailedC2);
+        System.out.println("Total de estudiantes en el curso 3: " + course3Count + " | " + nApprovedC3 + " | " + nFailedC3);
     }
 }
