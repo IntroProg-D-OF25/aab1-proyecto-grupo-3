@@ -1,77 +1,58 @@
 import java.util.Random;
 
 public class mejorEgresado {
-    public static void main(String[] args) {
-        float acd, ape, aa, promedio;
-        int course, id, nStudent = 9;
-        String name;
-        Random rand = new Random();
-        int course1Count = 0, course2Count = 0, course3Count = 0, nApprovedC1 = 0, nFailedC1 = 0, nApprovedC2 = 0,
-                nFailedC2 = 0, nApprovedC3 = 0, nFailedC3 = 0;
 
-        for (int i = 0; i < nStudent; i++) {
-            id = 1000000000 + rand.nextInt(900000000);
-            name = "Estudiante" + rand.nextInt(nStudent);
-            course = 1 + rand.nextInt(3);
-            acd = rand.nextFloat(2.5F, 3.5F);
-            ape = rand.nextFloat(2.5F, 3.5F);
-            aa = rand.nextFloat(2, 3);
+    public static void main(String[] args) {
+        Random random = new Random();
+        int totalEstudiantes = 9;
+        String nombre,id;
+        double promedio,acd,ape,aa;
+
+
+        // Variables para rastrear al mejor o mejores egresados
+        String mejorNombre1 = "",mejorNombre2 = "",mejorID1 = "",mejorID2 = "";
+        double mejorPromedio1 = 0.0, mejorPromedio2 = 0.0;
+
+        System.out.println("Listado de Estudiantes:");
+
+        for (int i = 1; i <= totalEstudiantes; i++) {
+            // Generar datos del estudiante
+            nombre = "Estudiante" + i;
+            id = String.valueOf(1000000000 + random.nextInt(900000000));
+            acd = random.nextFloat(2.5F,3.5F);
+            ape = random.nextFloat(2.5F,3.5F);
+            aa = random.nextFloat(2,3);
             promedio = acd + ape + aa;
 
-            if (course == 1) {
-                course1Count++;
-                System.out.println(" -----------------------------");
-                System.out.println("| Name:      |   " + name + "  |");
-                System.out.println(" -----------------------------");
-                System.out.println("| Id:        |   " + id + "   |");
-                System.out.println(" -----------------------------");
-                System.out.println("| Course:    |   " + course + "            |");
-                System.out.println(" -----------------------------");
-                /*
-                 * System.out.println("| acd:       |   " + acd);
-                 * System.out.println("| ape:       |   " + ape);
-                 * System.out.println("| aa:        |   " + aa);
-                 */
-                System.out.printf("| promedio:  |   %.3f        |%n", (promedio));
-                System.out.println(" -----------------------------\n");
-                // System.out.println("-------------------------------");
+            // Mostrar datos del estudiante
+//            System.out.printf("|\tNombre: %s\t|\tID: %s\t|\tPromedio: %.2f\t|\n", nombre, id, promedio);
+            System.out.println(nombre + id + promedio);
 
-                if (promedio >= 7)
-                    nApprovedC1++;
-                else {
-                    nFailedC1++;
-                }
+            // Verificar si es el mejor promedio
+            if (promedio > mejorPromedio1) {
+                // Desplazar al segundo lugar el actual mejor
+                mejorNombre2 = mejorNombre1;
+                mejorID2 = mejorID1;
+                mejorPromedio2 = mejorPromedio1;
 
-            } else if (course == 2) {
-                course2Count++;
-
-                if (promedio >= 7)
-                    nApprovedC2++;
-                else {
-                    nFailedC2++;
-                }
-            } else {
-                course3Count++;
-
-                if (promedio >= 7)
-                    nApprovedC3++;
-                else {
-                    nFailedC3++;
-                }
+                // Actualizar el primer lugar
+                mejorNombre1 = nombre;
+                mejorID1 = id;
+                mejorPromedio1 = promedio;
+            } else if (promedio == mejorPromedio1 && promedio > mejorPromedio2) {
+                // Si hay empate con el primer lugar, actualizar el segundo lugar
+                mejorNombre2 = nombre;
+                mejorID2 = id;
+                mejorPromedio2 = promedio;
             }
-
         }
 
-        System.out.println(" ----------------------------------------------------");
-        System.out.println(
-                "| Total de estudiantes en el curso 1 :  " + course1Count + "  |  " + nApprovedC1 + "  |  " + nFailedC1
-                        + " |");
-        System.out.println(
-                "| Total de estudiantes en el curso 2 :  " + course2Count + "  |  " + nApprovedC2 + "  |  " + nFailedC2
-                        + " |");
-        System.out.println(
-                "| Total de estudiantes en el curso 3 :  " + course3Count + "  |  " + nApprovedC3 + "  |  " + nFailedC3
-                        + " |");
-        System.out.println(" ----------------------------------------------------");
+        System.out.println("\n--- Mejor(es) Egresado(s) ---");
+        System.out.printf("1. Nombre: %s | ID: %s | Promedio: %.2f%n", mejorNombre1, mejorID1, mejorPromedio1);
+        if (mejorPromedio2 == mejorPromedio1) {
+            System.out.printf("2. Nombre: %s | ID: %s | Promedio: %.2f%n", mejorNombre2, mejorID2, mejorPromedio2);
+        } else {
+            System.out.println("No hubo empates.");
+        }
     }
 }
